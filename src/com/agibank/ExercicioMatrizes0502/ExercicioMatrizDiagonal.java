@@ -15,7 +15,8 @@ public class ExercicioMatrizDiagonal {
         // Dimensão da matriz
         int dimensaoMatriz = matriz.length;
 
-        // Imprime os elementos da diagonal principal
+        // Imprime os elementos da diagonal principal, como ?
+        //Quando eu coloco [i],[i] -> indices que são iguais ele pega a diagonal.
         System.out.println("Diagonal Principal:");
         for (int i = 0; i < dimensaoMatriz; i++) {
             System.out.print(matriz[i][i] + " ");

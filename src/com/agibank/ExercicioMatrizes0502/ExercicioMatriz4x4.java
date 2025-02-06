@@ -7,9 +7,9 @@ public class ExercicioMatriz4x4 {
     public static void main(String[] args) {
         // Exemplo de matriz 4x4
         int[][] matriz = {
-                {1, 2, 3, 4},
-                {5, 6, 7, 8},
-                {9, 10, 11, 12},
+                {1,  2,  3,  4},
+                {5,  6,  7,  8},
+                {9,  10, 11, 12},
                 {13, 14, 15, 16}
         };
 
