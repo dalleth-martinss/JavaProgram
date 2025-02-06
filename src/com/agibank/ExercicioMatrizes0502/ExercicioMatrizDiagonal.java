@@ -6,12 +6,12 @@ public class ExercicioMatrizDiagonal {
 
     public static void main(String[] args) {
         // Exemplo de matriz quadrada 3x3
+
         int[][] matriz = {
                 {1, 2, 3},
                 {4, 5, 6},
                 {7, 8, 9}
         };
-
         // Dimensão da matriz
         int dimensaoMatriz = matriz.length;
 
