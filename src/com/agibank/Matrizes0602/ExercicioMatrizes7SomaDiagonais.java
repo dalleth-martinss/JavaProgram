@@ -10,10 +10,8 @@ public class ExercicioMatrizes7SomaDiagonais {
                 {4, 5, 6},
                 {7, 8, 9}
         };
-
         int tamMatriz = matriz.length;
         int somaDiagonalPrincipal = 0, somaDiagonalSecundaria = 0;
-
         System.out.println("Diagonal Principal:");
         for (int i = 0; i < tamMatriz; i++) {
             somaDiagonalPrincipal += matriz [i][i];
@@ -21,7 +19,6 @@ public class ExercicioMatrizes7SomaDiagonais {
         }
         System.out.println("Soma da Diagonal Principal: " + somaDiagonalPrincipal);
         System.out.println("Soma da Diagonal Secundaria: " + somaDiagonalSecundaria);
-
         System.out.println();
     }
 }
