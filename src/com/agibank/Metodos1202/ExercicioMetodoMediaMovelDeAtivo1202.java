@@ -23,7 +23,7 @@ public class ExercicioMetodoMediaMovelDeAtivo1202 {
                 soma +=  valoresS[i+j];
             }
 
-            mediasx[i] = soma/ intervaloy;
+           // mediasx[i] = soma/ intervaloy;
         }
         return mediasx;
     }
