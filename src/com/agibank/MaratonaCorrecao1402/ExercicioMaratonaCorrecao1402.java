@@ -1,4 +1,4 @@
-package com.agibank.Maratona1402;
+package com.agibank.MaratonaCorrecao1402;
 
 import java.util.InputMismatchException;
 
