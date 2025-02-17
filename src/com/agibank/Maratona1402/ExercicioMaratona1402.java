@@ -38,17 +38,17 @@ public class ExercicioMaratona1402 {
         int diaMaiorVariacao = 0;
         double maiorVariacao = 0;
 
-        for (int dia = 1; dia < precos[0].length; dia++) {
+        for (int acao = 0; acao < precos.length; acao++) {
 
             double variacaoDia = 0;
 
-            for (int acao = 0; acao < precos.length; acao++) {
+            for (int dia = 1; dia < precos[0].length; dia++) {
                 variacaoDia += Math.abs(precos[acao][dia] - precos[acao][dia - 1]);
             }
 
             if (variacaoDia > maiorVariacao) {
                 maiorVariacao = variacaoDia;
-                diaMaiorVariacao = dia;
+                diaMaiorVariacao = acao;
             }
         }
         return diaMaiorVariacao + 1;
