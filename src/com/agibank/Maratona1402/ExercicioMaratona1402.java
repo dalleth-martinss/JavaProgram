@@ -1,5 +1,6 @@
 package com.agibank.Maratona1402;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 //Dev: Dálleth Martins
 //Nota : 100 - 30 = 70
@@ -9,88 +10,57 @@ import java.util.Scanner;
 public class ExercicioMaratona1402 {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite um número do índice para ver sua conta (1 a 3): ");
-
         try {
-            // Exibição do menu com as opções de conta
-            System.out.println(" ╔══════════════════════╗");
-            System.out.println(" ║ Conta no índice:     ║");
-            System.out.println(" ║ Ação 1: PETR4        ║");
-            System.out.println(" ║ Ação 2: VALE3        ║");
-            System.out.println(" ║ Ação 3: ITUB4        ║");
-            System.out.println(" ╚══════════════════════╝");
-        }catch (Exception e){
-            System.out.println("O valor digitado está incorreto, digite um valor de 1 a 3");
+            // Simulando os preços das ações (matriz 4x4)
+            double[][] precos = {
+                    {1000, 1020, 1010, 1030}, // PETR4
+                    {2000, 2025, 1990, 2050}, // VALE3
+                    {3000, 3030, 2995, 3070}, // ITAU4
+                    {4000, 4020, 3980, 4100}  // BB
+            };
+
+            // Exemplo de uso dos métodos
+            System.out.println("Média PETR4: " + calcularMediaLinha(precos, 0));
+            System.out.println("Dia de maior variação: " + calcularMaiorVariacao(precos));
+            System.out.println("Valor de ITAU4 no dia 3: " + consultarValor(precos, 2, 2));
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exceção capturada: " + e.getMessage());
+        } catch (InputMismatchException e) {
+            System.out.println("Erro de formato nos dados inseridos.");
         }
-
-        double[][]  matrizValores ={
-                {22.5, 23.0, 22.0, 24.5, 25.0},
-                {85.0, 86.5, 84.0, 83.5,87.0},
-                {30.0, 29.5, 30.5, 31.5,32.5},
-        };
-        int dias = 5;
-
-       double resultado = mediaPrecos(matrizValores, dias);
-
-        System.out.println(resultado);
-
     }
 
-    private static double mediaPrecos(double[][] matrizValores, int dias) {
-
-        double soma= 0;
-        double result = 0;
-        // Calcula media
-        for (int i = 0; i < matrizValores[0].length; i++) {
-            soma += matrizValores[0][i];
-            result = soma / matrizValores[0].length;
-
+    public static double calcularMediaLinha(double[][] precos, int linha) {
+        double soma = 0;
+        for (int i = 0; i < precos[linha].length; i++) {
+            soma += precos[linha][i];
         }
-        return result;
+        return soma / precos[linha].length;
     }
 
-    // o codigo só encontra o maior valor da linha 0 da matriz enquanto deveria percorrer todos os ativos e comparar o primeiro e último valor retornando a maior variação (Após conversar com a dev ela me explicou que não conseguiu concluir para mudar a resolução mas a lógica dela estava correta) -5
-    private static double maiorValorizacao(double[][] matrizValores, int dias) {
-                double maior1 = matrizValores[0][0];
+    public static int calcularMaiorVariacao(double[][] precos) {
+        int diaMaiorVariacao = 0;
+        double maiorVariacao = 0;
 
-        for (int i = 0; i < matrizValores[0].length ; i++) {
-            if (matrizValores[0][i] > maior1){
-                maior1 = matrizValores[0][i];
+        for (int dia = 1; dia < precos[0].length; dia++) {
+
+            double variacaoDia = 0;
+
+            for (int acao = 0; acao < precos.length; acao++) {
+                variacaoDia += Math.abs(precos[acao][dia] - precos[acao][dia - 1]);
+            }
+
+            if (variacaoDia > maiorVariacao) {
+                maiorVariacao = variacaoDia;
+                diaMaiorVariacao = dia;
             }
         }
-        return maior1;
+        return diaMaiorVariacao + 1;
     }
 
-    //-20
-    private static double consultaPreco(double[][] matrizValores, int dias) {
-        double maior1 = matrizValores[0][0];
-
-        for (int i = 0; i < matrizValores[0].length ; i++) {
-            if (matrizValores[0][i] > maior1){
-                maior1 = matrizValores[0][i];
-            }
-        }
-        return maior1;
-    }
-
-    // codigo incompleto -5
-    private  static double simulacaoLucroPerdas(double[][] matrizValores, int dias) {
-        double lucro = 0;
-        double valor = 0;
-        double perdas = 0;
-       double result = 0;
-
-        for (int i = 0; i < matrizValores[0].length ; i++) {
-            if (matrizValores[0][i] > valor){
-                System.out.println(" Lucro" + lucro);
-                result = matrizValores[0][i];
-            }else{
-                System.out.println("Perda" + perdas);
-                result = matrizValores[0][i];
-            }
-        }
-        return result ;
+    public static double consultarValor(double[][] precos, int linha, int coluna) {
+        return precos[linha][coluna];
     }
 
 }
