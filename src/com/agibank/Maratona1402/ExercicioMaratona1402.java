@@ -1,11 +1,6 @@
 package com.agibank.Maratona1402;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
-//Dev: Dálleth Martins
-//Nota : 100 - 30 = 70
-//Tester: Jennifer Kamily Silva Parreira
-
 
 public class ExercicioMaratona1402 {
 
